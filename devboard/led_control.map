@@ -353,10 +353,10 @@ END GROUP
  .debug_abbrev  0x00000000       0x53 led_control.o
  .debug_abbrev  0x00000053       0x14 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
 
-.debug_line     0x00000000       0xd8
+.debug_line     0x00000000       0xdc
  *(.debug_line)
- .debug_line    0x00000000       0x80 led_control.o
- .debug_line    0x00000080       0x58 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
+ .debug_line    0x00000000       0x84 led_control.o
+ .debug_line    0x00000084       0x58 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
 
 .debug_frame    0x00000000       0x24
  *(.debug_frame)
