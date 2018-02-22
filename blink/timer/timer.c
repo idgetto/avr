@@ -7,26 +7,24 @@
 #define clear_bit(reg, bit) (reg &= ~(1 << bit))
 #define toggle_bit(reg, bit) (reg ^= (1 << bit))
 
-ISR (TIMER1_COMPA_vect) {
+const int COUNT_START = 3036;
+
+ISR (TIMER1_OVF_vect) {
   toggle_bit(PORTC, LED);
+  TCNT1 = COUNT_START;
 }
 
 void setup_timer() {
-  // setup Timer/Counter Control Register
-  // as Clear Timer on Compare
-  TCCR1B |= 1 << WGM12;
-
   // use Timer/Counter Control Register
-  // to start timer at FCU/64
-  TCCR1B |= (1 << CS10) | (1 << CS11);
+  // to start timer at FCU/256
+  TCCR1B = 1 << CS11;
 
-  // use Output Compare Register
-  // to set timer compare value
-  OCR1A = 2499;
+  // set Timer 1 Counter
+  TCNT1 = COUNT_START;
 
   // use Timer Interrupt Mask to
-  // enable the compare interrupt
-  TIMSK1 = 1 << OCIE1A;
+  // enable then overflow interrupt
+  TIMSK1 = 1 << TOIE1;
 
   // enable global interrupts
   sei();
