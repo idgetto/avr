@@ -6,8 +6,8 @@ Archive member included because of file (symbol)
 Discarded input sections
 
  .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm168.o
- .text          0x00000000        0x0 blink.o
- .bss           0x00000000        0x0 blink.o
+ .text          0x00000000        0x0 basic.o
+ .bss           0x00000000        0x0 basic.o
  .text          0x00000000        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
  .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
  .text.libgcc.mul
@@ -40,7 +40,7 @@ Linker script and memory map
 
 Address of section .data set to 0x800100
 LOAD /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm168.o
-LOAD blink.o
+LOAD basic.o
 START GROUP
 LOAD /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a
 LOAD /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/libm.a
@@ -137,7 +137,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000       0xb0
+.text           0x00000000       0xb2
  *(.vectors)
  .vectors       0x00000000       0x68 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm168.o
                 0x00000000                __vectors
@@ -219,13 +219,13 @@ END GROUP
                 0x00000080                . = ALIGN (0x2)
  *(.text.*)
  .text.startup.main
-                0x00000080       0x2c blink.o
+                0x00000080       0x2e basic.o
                 0x00000080                main
-                0x000000ac                . = ALIGN (0x2)
+                0x000000ae                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000000ac        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
-                0x000000ac                exit
-                0x000000ac                _exit
+ .fini9         0x000000ae        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
+                0x000000ae                exit
+                0x000000ae                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -244,15 +244,15 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000000ac        0x4 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
+ .fini0         0x000000ae        0x4 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
  *(.fini0)
-                0x000000b0                _etext = .
+                0x000000b2                _etext = .
 
-.data           0x00800100        0x0 load address 0x000000b0
+.data           0x00800100        0x0 load address 0x000000b2
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm168.o
- .data          0x00800100        0x0 blink.o
+ .data          0x00800100        0x0 basic.o
  .data          0x00800100        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
  *(.data*)
  *(.rodata)
@@ -268,8 +268,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 0x00800100                PROVIDE (__bss_end, .)
-                0x000000b0                __data_load_start = LOADADDR (.data)
-                0x000000b0                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000000b2                __data_load_start = LOADADDR (.data)
+                0x000000b2                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800100        0x0
                 0x00800100                PROVIDE (__noinit_start, .)
@@ -317,7 +317,7 @@ END GROUP
 
 .comment        0x00000000       0x11
  *(.comment)
- .comment       0x00000000       0x11 blink.o
+ .comment       0x00000000       0x11 basic.o
                                  0x12 (size before relaxing)
 
 .debug
@@ -335,7 +335,7 @@ END GROUP
 .debug_aranges  0x00000000       0x40
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x20 blink.o
+                0x00000000       0x20 basic.o
  .debug_aranges
                 0x00000020       0x20 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
 
@@ -344,28 +344,28 @@ END GROUP
 
 .debug_info     0x00000000      0x202
  *(.debug_info)
- .debug_info    0x00000000      0x144 blink.o
+ .debug_info    0x00000000      0x144 basic.o
  .debug_info    0x00000144       0xbe /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev   0x00000000       0xe5
  *(.debug_abbrev)
- .debug_abbrev  0x00000000       0xd1 blink.o
+ .debug_abbrev  0x00000000       0xd1 basic.o
  .debug_abbrev  0x000000d1       0x14 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
 
-.debug_line     0x00000000      0x126
+.debug_line     0x00000000      0x127
  *(.debug_line)
- .debug_line    0x00000000       0xce blink.o
- .debug_line    0x000000ce       0x58 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
+ .debug_line    0x00000000       0xcf basic.o
+ .debug_line    0x000000cf       0x58 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
 
 .debug_frame    0x00000000       0x24
  *(.debug_frame)
- .debug_frame   0x00000000       0x24 blink.o
+ .debug_frame   0x00000000       0x24 basic.o
 
-.debug_str      0x00000000      0x15f
+.debug_str      0x00000000      0x165
  *(.debug_str)
- .debug_str     0x00000000      0x15f blink.o
-                                0x193 (size before relaxing)
+ .debug_str     0x00000000      0x165 basic.o
+                                0x199 (size before relaxing)
 
 .debug_loc
  *(.debug_loc)
@@ -378,9 +378,9 @@ END GROUP
 
 .debug_ranges   0x00000000       0x10
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x10 blink.o
+ .debug_ranges  0x00000000       0x10 basic.o
 
 .debug_macro
  *(.debug_macro)
-OUTPUT(blink.elf elf32-avr)
+OUTPUT(basic.elf elf32-avr)
 LOAD linker stubs

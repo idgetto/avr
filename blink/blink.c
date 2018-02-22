@@ -1,14 +1,18 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
+#define LED PC5
+
+#define set_bit(reg, bit) (reg |= (1 << bit))
+#define clear_bit(reg, bit) (reg &= ~(1 << bit))
+
 int main() {
-  DDRC |= (1 << PC5);
-  PORTC &= ~(1 << PC5);
+  set_bit(DDRC, LED);
 
   while (1) {
-    PORTC |= (1 << PC5);
+    set_bit(PORTC, LED);
     _delay_ms(500);
-    PORTC &= ~(1 << PC5);
+    clear_bit(PORTC, LED);
     _delay_ms(500);
   }
 
