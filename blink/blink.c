@@ -1,14 +1,14 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-#define LED PC5
+#define LED PD5
 
 #define set_bit(reg, bit) (reg |= (1 << bit))
 #define clear_bit(reg, bit) (reg &= ~(1 << bit))
 #define toggle_bit(reg, bit) (reg ^= (1 << bit))
 
 ISR (TIMER1_COMPA_vect) {
-  toggle_bit(PORTC, LED);
+  toggle_bit(PORTD, LED);
 }
 
 void setup_timer() {
@@ -34,7 +34,7 @@ void setup_timer() {
 
 int main() {
   // enable output to LED
-  set_bit(DDRC, LED);
+  set_bit(DDRD, LED);
 
   setup_timer();
 
